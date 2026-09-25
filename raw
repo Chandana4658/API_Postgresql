@@ -1,0 +1,31 @@
+import json
+
+from api.api_client import APIClient
+
+
+def main():
+
+    client = APIClient(
+        "https://jsonplaceholder.typicode.com"
+    )
+
+    users = client.get_data("users")
+
+    with open(
+        "data/raw/users.json",
+        "w",
+        encoding="utf-8"
+    ) as file:
+
+        json.dump(
+            users,
+            file,
+            indent=4
+        )
+
+    print("API data saved successfully.")
+
+
+if __name__ == "__main__":
+    main()
+    
