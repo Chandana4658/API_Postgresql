@@ -10,7 +10,7 @@ class APIClient:
 
     def get_data(self, endpoint):
 
-        url = f"{self.base_url}/{endpoint}"
+        url = f"{self.base_url}/{endpoint.lstrip('/')}"
 
         response = requests.get(
             url,

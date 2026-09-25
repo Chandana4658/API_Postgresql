@@ -1,23 +1,28 @@
-CREATE TABLE customers (
+-- Customers table
+CREATE TABLE IF NOT EXISTS customers (
     customer_id INTEGER PRIMARY KEY,
-    name VARCHAR(100),
-    email VARCHAR(150),
+    name VARCHAR(150) NOT NULL,
+    email VARCHAR(200) NOT NULL,
     city VARCHAR(100)
 );
 
-CREATE TABLE products (
+
+-- Products table
+CREATE TABLE IF NOT EXISTS products (
     product_id INTEGER PRIMARY KEY,
-    product_name VARCHAR(150),
+    product_name VARCHAR(150) NOT NULL,
     category VARCHAR(100),
-    price NUMERIC(10,2)
+    price NUMERIC(10,2) NOT NULL
 );
 
-CREATE TABLE orders (
+
+-- Orders table
+CREATE TABLE IF NOT EXISTS orders (
     order_id INTEGER PRIMARY KEY,
-    customer_id INTEGER,
-    product_id INTEGER,
-    quantity INTEGER,
-    order_date DATE,
+    customer_id INTEGER NOT NULL,
+    product_id INTEGER NOT NULL,
+    quantity INTEGER NOT NULL,
+    order_date DATE NOT NULL,
 
     CONSTRAINT fk_customer
         FOREIGN KEY (customer_id)
